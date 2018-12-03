@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 14, 2018 11:33:17 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.mindtree.entity.Department" table="DEPARTMENT">
+        <id name="departmentNo" type="int">
+            <column name="DEPARTMENTNO" />
+            <generator class="increment" />
+        </id>
+        <property name="departmentName" type="java.lang.String">
+            <column name="DEPARTMENTNAME" />
+        </property>
+        <set name="employee" table="EMPLOYEE" inverse="false" lazy="true" cascade="save-update">
+            <key>
+                <column name="DEPARTMENTNO" />
+            </key>
+            <one-to-many class="com.mindtree.entity.Employee" />
+        </set>
+    </class>
+</hibernate-mapping>
